@@ -1,7 +1,54 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+puts 'Cleaning database...'
+User.destroy_all
+Weapon.destroy_all
+
+puts 'Creating user...'
+users_attributes = [
+  {
+    name:        'Molière',
+    attack:      60,
+    life:        40,
+    profile_pic:  "assets/images/moliere.jpg" 
+  },
+  {
+    name:        'Shakespeare',
+    attack:      40,
+    life:        60,
+    profile_pic:  "assets/images/shakespeare.jpg"   
+  },
+  {
+    name:        'Césaire',
+    attack:      45,
+    life:        55,
+    profile_pic:  "assets/images/cesaire.jpg"   
+  },
+  {
+    name:        'Eminem',
+    attack:      65,
+    life:        35,
+    profile_pic:  "assets/images/eminem.jpg"   
+  }
+]
+User.create!(users_attributes)
+
+puts 'Creating weapon...'
+weapons_attributes = [
+  {
+    name:        'Dictionnaire',
+    damage:      40,
+    speed:        0 
+  },
+  {
+    name:        'Bescherelle',
+    damage:      20,
+    speed:        1  
+  },
+  {
+    name:        'Mot compte triple',
+    damage:      10,
+    speed:        3  
+  },
+]
+Weapon.create!(weapons_attributes)
+
+puts 'Finished!'
