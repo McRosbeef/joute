@@ -1,2 +1,33 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1>Créer votre personnage ici</h1>
+
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_user">
+			 	Créer un combatant ici
+			</button>
+			<p><%= link_to "Sinon la zone de combat est ici !", new_fight_path %></p>
+
+<!-- Modal -->
+<div class="modal fade" id="new_user" tabindex="-1" role="dialog" aria-labelledby="new_userLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title" id="new_userLabel">Création de combattant</h3>
+      </div>
+      <% steps = [] ; (0..100).step(5){|i| steps << i } %>
+      <div class="modal-body">
+        <%= simple_form_for @user do |f| %>
+          <%= f.input :name, label: 'Nom', required: false %>
+          <p>Le total de point de vie est d'attaque ne peut être supérieur à 100</p>
+          <%= f.input :attack, label: "Puissance d'attaque", required: false, collection: steps %>
+          <%= f.input :life, label: 'Vie', required: false, collection: steps %>
+          <%= f.button :submit, 'Créer', class: "text-right"  %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

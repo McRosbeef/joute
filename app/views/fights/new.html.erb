@@ -1,2 +1,81 @@
-<h1>Fights#new</h1>
-<p>Find me in app/views/fights/new.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<h1 class="text-uppercase font-shadow">zone de combat</h1>
+			
+			<div class="col-xs-6 margin-top-50"><%= link_to "Créer un combatant ici", new_user_path, class:"btn btn-primary" %></div>
+			<div class="col-xs-6 margin-top-50"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#users">
+			 	Voir la liste des combattants
+			</button></div>
+
+		</div>
+	</div>
+	<div class="container padding-top-100">
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<i><button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#new_fight">
+			 	FIGHT !
+			</button></i>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="users" tabindex="-1" role="dialog" aria-labelledby="users_label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title" id="new_userLabel">Liste des combattants</h3>
+      </div>
+      <div class="modal-body">
+				<div class="container-fluid">
+					<div class="row text-center">
+						<% @users.each do |u| %>
+							<div class="col-xs-6">
+				      	<p>
+				      		<%= image_tag u.profile_pic, size: "100x100", class: "round-avatar"%>
+									<h2><%= u.name %></h2>
+							
+									<p>Point d'attaque : <strong><%= u.attack %></strong></p>
+									<p>Point de vie : <strong><%= u.life %></strong></p>
+									<% if !!u.stat %>
+										<p>Taux de victoire: <strong><%= u.stat %> %</strong></p>
+									<% end %>	
+				      	</p>
+							</div>
+						<% end %>
+					</div>
+				</div>
+				
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="new_fight" tabindex="-1" role="dialog" aria-labelledby="new_userLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title" id="new_fight_label">Let's fight !</h3>
+      </div>
+      <div class="modal-body">
+				<% fighters = [] ; User.all.map {|u| fighters << [u.name, u.id] } %>
+				<% weapons = [] ; Weapon.all.map {|w| weapons << [w.name, w.id] } %>
+				<%= simple_form_for @fight do |f| %>
+				  <%= f.input :player_1, label: 'Choissisez votre poulain', required: false, collection: fighters %>
+				  <%= f.input :player_1_weapon_id, label: 'Choissisez votre arme', required: false, collection: weapons, prompt: "Sans arme comme un brave !" %>
+				  <%= f.input :player_2, label: "Quel sera son adversaire", required: false, collection: fighters %>
+				  <%= f.input :player_2_weapon_id, label: "Choissisez l'arme de mon adversaire", required: false, collection: weapons, prompt: "Sans arme comme un brave !"  %>
+				  <%= f.button :submit, 'Combattre !', class: "text-right"  %>
+				<% end %>
+				
+      </div>
+    </div>
+  </div>
+</div>

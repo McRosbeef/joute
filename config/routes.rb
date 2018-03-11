@@ -1,21 +1,17 @@
 Rails.application.routes.draw do
-  get 'users/new'
+  resources :users, only: [:new, :create, :edit, :show]
+  resources :fights, only: [:new, :create, :index, :show]
 
-  get 'users/edit'
+  # get 'fights/users'
 
-  get 'users/show'
-
-  get 'fights/users'
-
-  get 'fights/edit'
+  # get 'fights/edit'
 
   root 'fights#home'
 
-  get 'fights/new'
+  # get 'fights/new'
 
-  get 'fights/show'
+  # get 'fights/show'
 
-  get 'fights/index'
+  # get 'fights/index'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

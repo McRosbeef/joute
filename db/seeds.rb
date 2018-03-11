@@ -8,25 +8,25 @@ users_attributes = [
     name:        'Molière',
     attack:      60,
     life:        40,
-    profile_pic:  "assets/images/moliere.jpg" 
+    profile_pic:  "moliere.jpg" 
   },
   {
     name:        'Shakespeare',
     attack:      40,
     life:        60,
-    profile_pic:  "assets/images/shakespeare.jpg"   
+    profile_pic:  "shakespeare.jpg"   
   },
   {
     name:        'Césaire',
     attack:      45,
     life:        55,
-    profile_pic:  "assets/images/cesaire.jpg"   
+    profile_pic:  "cesaire.jpg"   
   },
   {
     name:        'Eminem',
     attack:      65,
     life:        35,
-    profile_pic:  "assets/images/eminem.jpg"   
+    profile_pic:  "eminem.jpg"   
   }
 ]
 User.create!(users_attributes)
@@ -36,12 +36,12 @@ weapons_attributes = [
   {
     name:        'Dictionnaire',
     damage:      40,
-    speed:        0 
+    speed:        1
   },
   {
     name:        'Bescherelle',
     damage:      20,
-    speed:        1  
+    speed:        2
   },
   {
     name:        'Mot compte triple',
