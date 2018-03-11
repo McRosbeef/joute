@@ -1,10 +1,16 @@
-<div class="container">
-	<div class="row">
+<div class="container background">
+	<div class="row text-center">
 		<div class="col-xs-12">
-			<h1>Vous voici dans l'arène !</h1>
-			<p>Venez défiez les meilleurs artistes</p>
-			<p><%= link_to "Combattre !", new_fight_path %></p>
-			
+			<h1 class="font-shadow text-uppercase">Vous voici dans l'arène !</h1>
+		</div>
+		<div class="col-xs-12 text-white margin-top-80">
+			<p>Venez défier les meilleurs artistes</p>
+			<p>Ici pas de violence physique, ne seront utilisés que des mots.</p>
+			<strong>A vos PUNCHLINES !</strong>
+		</div>
+		<div class="col-xs-12">
+			<p><%= link_to "Combattre !", new_fight_path, class: "btn btn-warning margin-top-50" %></p>
 		</div>
 	</div>
 </div>
+<%= video_tag "furious.mp4", autoplay: :autoplay, loop: :loop, mute: :mute, class: "video" %>

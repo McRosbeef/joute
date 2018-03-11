@@ -2,10 +2,19 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<h1>Combattant</h1>
+			<%= image_tag @user.profile_pic, size: "100x100", class: "round-avatar"%>
 			<h2><%= @user.name %></h2>
 
-			<p>Point d'attaque : <%= @user.attack %></p>
-			<p>Point de vie : <%= @user.life %></p>
+			<p>Point d'attaque : <strong><%= @user.attack %></strong></p>
+			<p>Point de vie : <strong><%= @user.life %></strong></p>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+				<p><%= link_to "Retour dans l'arène", new_fight_path %></p>
 		</div>
 	</div>
 </div>

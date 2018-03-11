@@ -18,12 +18,12 @@ ActiveRecord::Schema.define(version: 20180226211059) do
   create_table "fights", force: :cascade do |t|
     t.integer  "winner_score"
     t.integer  "looser_score"
-    t.integer  "winner"
-    t.integer  "looser"
-    t.integer  "player_1_weapon"
-    t.integer  "player_2_weapon"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "winner_id"
+    t.integer  "looser_id"
+    t.integer  "player_1_weapon_id"
+    t.integer  "player_2_weapon_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "users", force: :cascade do |t|
