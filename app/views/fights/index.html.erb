@@ -1,2 +1,38 @@
-<h1>Fights#index</h1>
-<p>Find me in app/views/fights/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1><i>TOUS LES BATTLES</i> </h1>
+		</div>
+		<div class="row">
+			<% @fights.each do |f| %>
+				<div class="col-xs-8 col-xs-offset-2 card">
+					
+					<h2>COMBAT N# <%= f.id %></h2>
+					<h3><%= f.winner.name.capitalize %> a gagné !</h3>
+					<% if !!f.winner_weapon %>
+						<p>Avec <%= f.winner_weapon.name %></p>
+					<% else %>
+						<p>En plus il n'avait pas d'arme, que son courage.</p>	
+					<% end %>
+					
+					<h4><%= f.looser.name.capitalize %> a perdu.</h4>
+					<% if !!f.looser_weapon %>
+						<p>Avec <%= f.winner_weapon_id %></p>
+					<% else %>
+						<p>Il n'avait pas d'arme, la prochaine fois peut-être qu'une arme l'aidera..</p>	
+					<% end %>
+					<%= link_to "Voir le score", fight_path(f), class: "btn btn-primary margin-top-20" %>
+
+				</div>
+			<% end %>
+		</div>	
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 margin-top-50">
+				<p><%= link_to "Retour dans l'arène", new_fight_path %></p>
+		</div>
+	</div>
+</div>

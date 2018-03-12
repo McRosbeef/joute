@@ -19,6 +19,15 @@
 			</div>
 		</div>
 	</div>
+	<% if !!@fights.count %>
+		<div class="container padding-top-100">
+			<div class="row">
+				<div class="col-xs-12 text-right">
+					<%= link_to "Voir l'historique des battles", fights_path, class:"btn btn-primary  margin-right-100" %>
+				</div>
+			</div>
+		</div>
+	<% end %>	
 </div>
 
 <div class="modal fade" id="users" tabindex="-1" role="dialog" aria-labelledby="users_label" aria-hidden="true">
@@ -39,7 +48,7 @@
 				      		<%= image_tag u.profile_pic, size: "100x100", class: "round-avatar"%>
 									<h2><%= u.name %></h2>
 							
-									<p>Point d'attaque : <strong><%= u.attack %></strong></p>
+									<p>Puissance du flow : <strong><%= u.attack %></strong></p>
 									<p>Point de vie : <strong><%= u.life %></strong></p>
 									<% if !!u.stat %>
 										<p>Taux de victoire: <strong><%= u.stat %> %</strong></p>
@@ -69,9 +78,9 @@
 				<% weapons = [] ; Weapon.all.map {|w| weapons << [w.name, w.id] } %>
 				<%= simple_form_for @fight do |f| %>
 				  <%= f.input :player_1, label: 'Choissisez votre poulain', required: false, collection: fighters %>
-				  <%= f.input :player_1_weapon_id, label: 'Choissisez votre arme', required: false, collection: weapons, prompt: "Sans arme comme un brave !" %>
+				  <%= f.input :player_1_weapon, label: 'Choissisez votre arme', required: false, collection: weapons, prompt: "Sans arme comme un brave !" %>
 				  <%= f.input :player_2, label: "Quel sera son adversaire", required: false, collection: fighters %>
-				  <%= f.input :player_2_weapon_id, label: "Choissisez l'arme de mon adversaire", required: false, collection: weapons, prompt: "Sans arme comme un brave !"  %>
+				  <%= f.input :player_2_weapon, label: "Choissisez l'arme de mon adversaire", required: false, collection: weapons, prompt: "Sans arme comme un brave !"  %>
 				  <%= f.button :submit, 'Combattre !', class: "text-right"  %>
 				<% end %>
 				

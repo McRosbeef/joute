@@ -1,12 +1,17 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<h1>Créer votre personnage ici</h1>
+			<h1><u>CREER VOTRE PERSONNAGE</u></h1>
 
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_user">
+			<button type="button" class="btn btn-primary margin-top-50" data-toggle="modal" data-target="#new_user">
 			 	Créer un combatant ici
 			</button>
+		</div>
+		<div class="col-xs-12 margin-top-50">
 			<p><%= link_to "Sinon la zone de combat est ici !", new_fight_path %></p>
+		</div>
+	</div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="new_user" tabindex="-1" role="dialog" aria-labelledby="new_userLabel" aria-hidden="true">
@@ -22,8 +27,8 @@
       <div class="modal-body">
         <%= simple_form_for @user do |f| %>
           <%= f.input :name, label: 'Nom', required: false %>
-          <p>Le total de point de vie est d'attaque ne peut être supérieur à 100</p>
-          <%= f.input :attack, label: "Puissance d'attaque", required: false, collection: steps %>
+          <p>Le total de point de vie et la puissance du flow ne peut être supérieur à 100</p>
+          <%= f.input :attack, label: "Puissance du flow", required: false, collection: steps %>
           <%= f.input :life, label: 'Vie', required: false, collection: steps %>
           <%= f.button :submit, 'Créer', class: "text-right"  %>
         <% end %>
