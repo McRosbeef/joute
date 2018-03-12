@@ -34,14 +34,14 @@ class Fight < ApplicationRecord
   	if p_1_agility >= p_2_agility
   		self.winner_id = player_1.id
   		self.winner_weapon_id = !!p_1_weapon ? p_1_weapon.id : nil 
-  		self.winner_score = p_1_agility - p_2_agility
+  		self.winner_score = p_1_agility
   		self.looser_id = player_2.id
   		self.looser_weapon_id = !!p_2_weapon ? p_2_weapon.id : nil 
   		self.looser_score = p_2_agility
   	else
   		self.winner_id = player_2.id
   		self.winner_weapon_id = !!p_2_weapon ? p_2_weapon.id : nil 
-  		self.winner_score = p_2_agility - p_1_agility
+  		self.winner_score = p_2_agility
   		self.looser_id = player_1.id
   		self.looser_weapon_id = !!p_1_weapon ? p_1_weapon.id : nil 
   		self.looser_score = p_1_agility
@@ -69,7 +69,7 @@ class Fight < ApplicationRecord
 
   def set_stats
   	w = User.find_by(id: self.winner_id)
-  	w.stat = ((Fight.where(winner_id: w.id).count + Fight.where(looser_id: w.id).count) / (Fight.where(winner_id: w.id).count)) * 100
+  	w.stat = ((Fight.where(winner_id: w.id).count) / (Fight.where(winner_id: w.id).count + Fight.where(looser_id: w.id).count)) * 100
   	w.save!
   end
 
