@@ -10,14 +10,14 @@
 					<h2>COMBAT N# <%= f.id %></h2>
 					<h3><%= f.winner.name.capitalize %> a gagné !</h3>
 					<% if !!f.winner_weapon %>
-						<p>Avec <%= f.winner_weapon.name %></p>
+						<p>Avec un <%= f.winner_weapon.name.downcase %></p>
 					<% else %>
 						<p>En plus il n'avait pas d'arme, que son courage.</p>	
 					<% end %>
 					
 					<h4><%= f.looser.name.capitalize %> a perdu.</h4>
 					<% if !!f.looser_weapon %>
-						<p>Avec <%= f.winner_weapon_id %></p>
+						<p>Avec un <%= f.looser_weapon.name.downcase %></p>
 					<% else %>
 						<p>Il n'avait pas d'arme, la prochaine fois peut-être qu'une arme l'aidera..</p>	
 					<% end %>
