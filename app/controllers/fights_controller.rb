@@ -13,8 +13,8 @@ class FightsController < ApplicationController
 
 		@fight.player_1 =  User.find_by(id: fight_params[:player_1])
 		@fight.player_2 =  User.find_by(id: fight_params[:player_2])
-		@fight.player_1_weapon_id =  fight_params[:player_1_weapon_id]
-		@fight.player_2_weapon_id =  fight_params[:player_2_weapon_id]
+		@fight.player_1_weapon =  fight_params[:player_1_weapon]
+		@fight.player_2_weapon =  fight_params[:player_2_weapon]
   	
   	@fight.game
 
@@ -40,6 +40,6 @@ class FightsController < ApplicationController
 
 
   def fight_params
-  	params.require(:fight).permit(:player_1, :player_2, :player_1_weapon_id, :player_2_weapon_id)
+  	params.require(:fight).permit(:player_1, :player_2, :player_1_weapon, :player_2_weapon)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180226211059) do
+ActiveRecord::Schema.define(version: 20180312213120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20180226211059) do
     t.integer  "looser_score"
     t.integer  "winner_id"
     t.integer  "looser_id"
-    t.integer  "player_1_weapon_id"
-    t.integer  "player_2_weapon_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.integer  "winner_weapon_id"
+    t.integer  "looser_weapon_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "users", force: :cascade do |t|

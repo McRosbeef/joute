@@ -5,11 +5,22 @@
 		</div>
 		<div class="row">
 			<% @fights.each do |f| %>
-				<div class="col-xs-6 card">
+				<div class="col-xs-5 card">
 					
 					<h2>COMBAT N# <%= f.id %></h2>
 					<h3><%= f.winner.name.capitalize %> a gagné !</h3>
+					<% if !!f.winner_weapon %>
+						<p>Avec <%= f.winner_weapon.name %></p>
+					<% else %>
+						<p>En plus il n'avait pas d'arme, que son courage.</p>	
+					<% end %>
+					
 					<h4><%= f.looser.name.capitalize %> a perdu.</h4>
+					<% if !!f.looser_weapon %>
+						<p>Avec <%= f.winner_weapon_id %></p>
+					<% else %>
+						<p>Il n'avait pas d'arme, la prochaine fois peut-être qu'une arme l'aidera..</p>	
+					<% end %>
 					<%= link_to "Voir le score", fight_path(f), class: "btn btn-primary margin-top-20" %>
 
 				</div>

@@ -27,8 +27,8 @@
       <div class="modal-body">
         <%= simple_form_for @user do |f| %>
           <%= f.input :name, label: 'Nom', required: false %>
-          <p>Le total de point de vie est d'attaque ne peut être supérieur à 100</p>
-          <%= f.input :attack, label: "Puissance d'attaque", required: false, collection: steps %>
+          <p>Le total de point de vie et la puissance du flow ne peut être supérieur à 100</p>
+          <%= f.input :attack, label: "Puissance du flow", required: false, collection: steps %>
           <%= f.input :life, label: 'Vie', required: false, collection: steps %>
           <%= f.button :submit, 'Créer', class: "text-right"  %>
         <% end %>
