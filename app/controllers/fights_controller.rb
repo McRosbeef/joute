@@ -5,6 +5,7 @@ class FightsController < ApplicationController
   def new
   	@users = User.all
   	@fight = Fight.new
+    @fights = Fight.all
   end
 
   def create
@@ -32,6 +33,7 @@ class FightsController < ApplicationController
   end
 
   def index
+    @fights = Fight.all
   end
 
   private

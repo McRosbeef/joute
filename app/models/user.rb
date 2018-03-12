@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
 	validates :name, :attack, :life, presence: true
 
-	validate :total_is_not_higher_than_100
+	validate :total_is_not_higher_than_100, on: :create
 
 	def set_picture
 		self.profile_pic ||= "default_avatar.jpg"

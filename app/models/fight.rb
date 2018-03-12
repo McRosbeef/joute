@@ -6,6 +6,7 @@ class Fight < ApplicationRecord
 
   attr_accessor :player_1, :player_2
   after_save :set_stats
+  after_save :set_exp_point
 
   def game
   	# furiosity calcul // (player's life/ attack) 
@@ -43,11 +44,25 @@ class Fight < ApplicationRecord
   	end
   end
 
+  def winner
+  	User.find_by(id: self.winner_id)
+  end
+
+  def looser
+  	User.find_by(id: self.looser_id)
+  end
+
   private
 
   def set_stats
   	w = User.find_by(id: self.winner_id)
   	w.stat = ((Fight.where(winner_id: w.id).count + Fight.where(looser_id: w.id).count) / (Fight.where(winner_id: w.id).count)) * 100
+  	w.save!
+  end
+
+  def set_exp_point
+  	w = User.find_by(id: self.winner_id)
+  	w.life += 1
   	w.save!
   end
 end
