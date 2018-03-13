@@ -69,7 +69,7 @@ class Fight < ApplicationRecord
 
   def set_stats
   	w = User.find_by(id: self.winner_id)
-  	w.stat = ((Fight.where(winner_id: w.id).count) / (Fight.where(winner_id: w.id).count + Fight.where(looser_id: w.id).count)) * 100
+  	w.stat = ((Fight.where(winner_id: w.id).count).to_f / (Fight.where(winner_id: w.id).count + Fight.where(looser_id: w.id).count).to_f) * 100.0
   	w.save!
   end
 
