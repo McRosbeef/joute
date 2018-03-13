@@ -12,6 +12,9 @@
 	border-radius: 1px;
 	box-shadow: 20px 20px 1px #030352;
 	text-align: center;
+	&.col-xs-6 {
+		width: 40%;
+	}
 }
 
 .modal-lg {
